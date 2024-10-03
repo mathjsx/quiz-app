@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SVG Interaktif</title>
+  <style>
+    html, body {
+      margin: 0;
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+  <svg id="mySVG" viewBox="0 0 100% 100%" preserveAspectRatio="xMidYMid meet">
+    <rect id="layer1" width="100%" height="100%" fill="lightblue" />
+    <image id="myImage" href="./gbr/mapkom.svg" width="100%" height="100%" />
+    <g id="controlPanel" transform="translate(90%, 5%)">
+      <rect width="10%" height="10%" fill="white" />
+      </g>
+  </svg>
+  <script>
+      
+      
+      const svg = document.getElementById('mySVG');
+const image = document.getElementById('myImage');
+const controlPanel = document.getElementById('controlPanel');
+
+let scale = 1;
+let translateX = 0;
+let translateY = 0;
+
+// Fungsi untuk zoom in
+function zoomIn() {
+  scale *= 1.2;
+  updateTransform();
+}
+
+// Fungsi untuk zoom out
+function zoomOut() {
+  scale /= 1.2;
+  updateTransform();
+}
+
+// Fungsi untuk reset zoom dan posisi
+function reset() {
+  scale = 1;
+  translateX = 0;
+  translateY = 0;
+  updateTransform();
+}
+
+// Fungsi untuk memperbarui transformasi gambar
+function updateTransform() {
+  image.setAttribute('transform', `scale(${scale}) translate(${translateX} ${translateY})`);
+}
+
+// Event listener untuk drag and drop
+svg.addEventListener('mousedown', (event) => {
+  // Implementasi drag and drop di sini
+});
+
+  </script>
+</body>
+</html>
